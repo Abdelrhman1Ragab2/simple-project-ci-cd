@@ -12,7 +12,7 @@ pipeline {
                 sshagent(credentialsId: 'ssh-remote-machine') {
                     sh 'ansible-playbook -i inv.ini playbook.yml'
                 }
-        }
+            }
         
         }
     }
