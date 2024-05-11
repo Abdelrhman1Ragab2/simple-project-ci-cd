@@ -1,6 +1,6 @@
 ---
 - name: "Build container with ansible"
-  hosts: localhost
+  hosts: all
   
   become: true
   vars:
