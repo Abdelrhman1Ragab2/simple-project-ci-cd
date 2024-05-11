@@ -12,8 +12,11 @@ pipeline {
                 // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-remote-machine', keyFileVariable: 'SSH_KEY')]) {
                 //    sh 'ansible-playbook --private-key $SSH_KEY -i inv.ini playbook.yml'
                 // }
-                sshagent(['ssh-remote-machine']) {
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@3.250.91.190 echo hello"
+                sshagent(credentialsId: 'ssh-remote-machine') {
+                    catchError {
+                        sh 'ansible-playbook  -i inv.ini playbook.yml'
+                        echo 'Ansible playbook execution completed.'
+                    }
                 }
             }
         
