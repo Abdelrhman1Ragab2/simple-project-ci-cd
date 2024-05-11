@@ -12,11 +12,8 @@ pipeline {
                 // withCredentials([sshUserPrivateKey(credentialsId: 'ssh-remote-machine', keyFileVariable: 'SSH_KEY')]) {
                 //    sh 'ansible-playbook --private-key $SSH_KEY -i inv.ini playbook.yml'
                 // }
-                sshagent(credentialsId: 'ssh-remote-machine') {
-                    catchError {
-                        sh 'ansible-playbook  -i inv.ini playbook.yml'
-                        echo 'Ansible playbook execution completed.'
-                    }
+                sshagent(['ssh-remote-machine']) {
+                      sh "ansible-playbook -i inv.ini playbook.yml"
                 }
             }
         
