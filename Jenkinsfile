@@ -9,8 +9,8 @@ pipeline {
         stage('First-Stage') {
         
             steps {
-                sshagent(credentialsId: 'ssh-remote-machine') {
-                    sh 'ansible-playbook -i inv.ini playbook.yml'
+                withCredentials([sshUserPrivateKey(credentialsId: 'ssh-remote-machine', keyFileVariable: 'SSH_KEY')]) {
+                   sh 'ansible-playbook --private-key $SSH_KEY -i inv.ini playbook.yml'
                 }
             }
         
