@@ -2,7 +2,7 @@ FROM nginx:latest
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY ./rayban/  /usr/share/nginx/html
+COPY rayban/  /var/www/html/
 
 EXPOSE 80
 
