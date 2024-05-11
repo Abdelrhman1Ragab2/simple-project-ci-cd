@@ -1,6 +1,7 @@
 ---
 - name: "Build container with ansible"
   hosts: localhost
+  gather_facts: false
   become: true
   vars:
     ansible_become_password: ""
