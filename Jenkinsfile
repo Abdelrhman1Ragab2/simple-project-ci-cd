@@ -14,7 +14,7 @@ pipeline {
                 // }
                 sshagent(['ssh-remote-machine']) {
                      // sh "ansible-playbook -i inv.ini playbook.yml"
-                     sh "ssh -o StrictHostKeyChecking=no ec2-user@ip echo hello"
+                     sh "ssh -o StrictHostKeyChecking=no ubuntu@3.253.79.21 echo hello"
 
                 }
             }
