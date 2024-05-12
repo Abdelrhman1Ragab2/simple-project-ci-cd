@@ -9,7 +9,7 @@
   tasks:
 
    - name: change current dir to project
-     shell: cd ~/project 
+     shell: cd /home/ubuntu/project 
      register: pwd_output
 
    - name: Display registered output
