@@ -12,7 +12,7 @@
      register: pwd_output
 
    - name: Display registered output
-      debug:
+     debug:
         var: pwd_output.stdout
 
    - name: Clone GitHub repository
