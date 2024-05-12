@@ -8,18 +8,26 @@
     ansible_user: 'ubuntu'
   tasks:
 
+   # - name: print current dir
+   #   command: pwd
+   #   register: pwd_output
+
+   # - name: Display registered output
+   #   debug:
+   #      var: pwd_output.stdout
+
+   # - name: Clone GitHub repository
+   #   git:
+   #      repo: https://github.com/Abdelrhman1Ragab2/simple-project-ci-cd.git
+   #      dest: /home/ubuntu/project
+        
    - name: print current dir
-     command: pwd
-     register: pwd_output
+     command: cat /home/ubuntu/project/Dockerfile
+     register: cat_output
 
    - name: Display registered output
      debug:
-        var: pwd_output.stdout
-
-   - name: Clone GitHub repository
-     git:
-        repo: https://github.com/Abdelrhman1Ragab2/simple-project-ci-cd.git
-        dest: /home/ubuntu/project
+        var: cat
         
    - name: build docker image from dockerfile
      command: docker build -t rayban-image /home/ubuntu/project/Dockerfile
