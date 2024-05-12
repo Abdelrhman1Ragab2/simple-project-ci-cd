@@ -7,6 +7,14 @@
     ansible_become_password: ""
   tasks:
 
+   - name: print current dir
+        command: pwd
+        register: pwd_output
+
+   - name: Display registered output
+      debug:
+        var: pwd_output.stdout
+
    - name: Clone GitHub repository
      git:
         repo: https://github.com/Abdelrhman1Ragab2/simple-project-ci-cd.git
