@@ -6,11 +6,21 @@
   vars:
     ansible_become_password: ""
   tasks:
+
+   - name: Clone GitHub repository
+     git:
+        repo: https://github.com/Abdelrhman1Ragab2/simple-project-ci-cd.git
+        dest: /home/ubuntu/project
+        
     - name: build docker image from dockerfile
-      command: docker build -t rayban-image .
+      command: docker build -t rayban-image /home/ubuntu/project/Dockerfile
 
     - name: run container from image
       command: docker run -d --name rayban -p 80:80 rayban-image
+      
+ 
+
+
 
 # - name: "Build container with ansible"
 #   hosts: localhost
