@@ -13,7 +13,9 @@ pipeline {
                 //    sh 'ansible-playbook --private-key $SSH_KEY -i inv.ini playbook.yml'
                 // }
                 sshagent(['ssh-remote-machine']) {
-                      sh "ansible-playbook -i inv.ini playbook.yml"
+                     # sh "ansible-playbook -i inv.ini playbook.yml"
+                     sh "ssh -o StrictHostKeyChecking=no ec2-user@ip echo hello"
+
                 }
             }
         
