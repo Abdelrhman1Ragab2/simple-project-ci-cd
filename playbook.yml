@@ -10,11 +10,14 @@
 
    - name: change current dir to project
      shell: cd /home/ubuntu/project 
+     
+   - name: print cd 
+     shell: pwd
      register: pwd_output
 
    - name: Display registered output
      debug:
-        var: pwd_output.stdout
+        var: pwd_output
 
    # - name: Clone GitHub repository
    #   git:
