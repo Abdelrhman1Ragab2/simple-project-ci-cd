@@ -8,29 +8,32 @@
     ansible_user: 'ubuntu'
   tasks:
 
-   # - name: print current dir
-   #   command: pwd
-   #   register: pwd_output
+   - name: change current dir to project
+     command: cd project
 
-   # - name: Display registered output
-   #   debug:
-   #      var: pwd_output.stdout
+   - name: print path
+     command: pwd
+     register: pwd_output
+
+   - name: Display registered output
+     debug:
+        var: pwd_output.stdout
 
    # - name: Clone GitHub repository
    #   git:
    #      repo: https://github.com/Abdelrhman1Ragab2/simple-project-ci-cd.git
    #      dest: /home/ubuntu/project
         
-   - name: print current dir
+   - name: print content of  dockerfile
      command: cat /home/ubuntu/project/Dockerfile
      register: cat_output
 
    - name: Display registered output
      debug:
-        var: cat
+        var: cat_output.stdout
         
    - name: build docker image from dockerfile
-     command: docker build -t rayban-image /home/ubuntu/project/Dockerfile
+     command: docker build -t rayban-image .
 
    - name: run container from image
      command: docker run -d --name rayban -p 80:80 rayban-image
