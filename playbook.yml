@@ -8,8 +8,8 @@
   tasks:
 
    - name: print current dir
-        command: pwd
-        register: pwd_output
+     command: pwd
+     register: pwd_output
 
    - name: Display registered output
       debug:
