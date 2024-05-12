@@ -5,6 +5,7 @@
   become: true
   vars:
     ansible_become_password: ""
+    ansible_user: 'ubuntu'
   tasks:
 
    - name: print current dir
