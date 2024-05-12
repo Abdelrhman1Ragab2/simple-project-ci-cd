@@ -9,7 +9,7 @@
   tasks:
 
    - name: change current dir to project
-     command: cd ./project
+     command: ls 
 
    - name: print path
      command: pwd
